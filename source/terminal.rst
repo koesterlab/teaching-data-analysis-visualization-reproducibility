@@ -56,3 +56,8 @@ To remove a directory, you have to add the option ``-r`` (for "recursive"), whic
 
 removes the directory ``new_directory``.
 Do this now.
+
+Performing such filesystem operations in the terminal can be much quicker than doing so via a graphical file manager.
+Moreover, it is often easier to automate such operations in the terminal.
+For example, you could write a terminal command that removes all files in a directory that are older than a certain date or that start with a certain prefix.
+In this course, we will however limit our interaction with the terminal to invoking software (also called command line tools) with certain parameters.
