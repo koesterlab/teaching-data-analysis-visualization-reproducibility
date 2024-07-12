@@ -1,5 +1,6 @@
+***********************************************
 A short introduction to programming with Python
-###############################################
+***********************************************
 
 The central idea behind programming is to write instructions that tell a computer what to do.
 These instructions are written in a programming language, which provides a vocabulary and a grammar to work with.
@@ -15,7 +16,7 @@ Python is an open-source language, which means that it is free to use and distri
 Python is supported by a wide range of libraries and frameworks that make it easy to work with data.
 
 Central concepts
-****************
+================
 
 Python is programmed by creating text files that contain Python code.
 Alternatively, it can be programmed within so-called (Jupyter) notebooks, which allow for a more interactive way of programming.
@@ -27,7 +28,7 @@ First, create a new notebook in your IDE (assuming you use Visual Studio Code or
 3. Read the text below while trying out all of the examples by literally typing them yourself in the notebook.
 
 Primitive data types
-====================
+--------------------
 
 Python supports various basic, so-called primitive, data types, namely
 
@@ -37,7 +38,7 @@ Python supports various basic, so-called primitive, data types, namely
 * text (so-called strings): ``some_value = "this is my text"``
 
 Operators over primitive data types
-===================================
+-----------------------------------
 
 Python supports various operators that can be used on primitive data types.
 The most important ones are:
