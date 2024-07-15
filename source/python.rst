@@ -48,6 +48,12 @@ The most important ones are:
 * logical operators: ``and``, ``or``, ``not``
 * assignment operators: ``=`` (assign a value to a variable), ``+=`` (add a value to a variable), ``-=`` (subtract a value from a variable), ``*=`` (multiply a variable by a value), ``/=`` (divide a variable by a value)
 
+Programming Python with Jupyter notebooks
+=========================================
+
+Open VSCode, and create a new Jupyter notebook by creating a file in the left panel ending on ``.ipynb``.
+
+
 Variables
 =========
 

@@ -16,7 +16,7 @@ author = 'Prof. Dr. rer. nat. Johannes Köster'
 # -- General configuration ---------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#general-configuration
 
-extensions = ['sphinxawesome_theme.highlighting']
+extensions = ['sphinxawesome_theme.highlighting', 'sphinx_design']
 
 templates_path = ['_templates']
 exclude_patterns = []
@@ -32,3 +32,5 @@ html_static_path = ['_static']
 html_permalinks_icon = Icons.permalinks_icon
 
 pygments_style = "sphinx"
+
+html_compact_lists = True

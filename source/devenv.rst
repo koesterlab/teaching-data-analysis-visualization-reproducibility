@@ -1,3 +1,5 @@
+.. _vscode:
+
 ***************************
 The development environment
 ***************************
@@ -20,7 +22,7 @@ There are numerous options available.
 In this course, we will use Visual Studio Code (VSCode), which is one of the most popular options and offers numerous useful extensions for our tasks.
 
 If you are on Windows, follow `these <https://code.visualstudio.com/docs/remote/wsl>`_ instructions to install VSCode in combination with WSL.
-Otherwise, just install `VSCode <https://code.visualstudio.com>`_.
+Otherwise, just install `VSCode <https://code.visualstudio.com>`__.
 
 After installing VSCode, open it and install the following extensions:
 

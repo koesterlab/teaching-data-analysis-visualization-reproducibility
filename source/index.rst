@@ -13,6 +13,11 @@ Course: Data Analysis and Visualization's documentation!
    :hidden:
 
    devenv
+   terminal
    git
+   datavzrd
+   micromamba
    python
-   significance
+   polars
+   altair
+   journalclub
