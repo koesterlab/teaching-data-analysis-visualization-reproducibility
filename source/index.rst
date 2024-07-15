@@ -19,5 +19,6 @@ Course: Data Analysis and Visualization's documentation!
    micromamba
    python
    polars
+   journalclub_1
    altair
-   journalclub
+   journalclub_2
