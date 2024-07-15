@@ -77,7 +77,7 @@ While this can be fine in certain cases, it is certainly not when you want to en
 
 To solve this, we can create a file that contains the exact software versions, called an environment file.
 We do that for the example from before.
-Create a folder ``dataviz/micromamba`` that holds files related to this chapter, and in there create the file ``test-environment.yaml`` with the following content:
+Create a folder ``dataviz/envs`` that holds files related to this chapter, and in there create the file ``datavzrd.yaml`` with the following content:
 
 .. code-block:: yaml
 
@@ -94,7 +94,7 @@ Now, you can create the environment from this file:
 
 .. code-block:: bash
 
-    micromamba env create -f test-environment.yaml -n datavzrd
+    micromamba env create -f datavzrd.yaml -n datavzrd
 
 .. admonition:: Exercise
 

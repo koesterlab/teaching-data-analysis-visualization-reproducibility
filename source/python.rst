@@ -147,6 +147,15 @@ This is done via the ``import`` keyword:
 Documentation of the standard library can be found at https://docs.python.org/3/library/index.html
 External packages can be found at https://pypi.org/, including links to their package specific documentation.
 
+Tuples
+======
+
+Lists
+=====
+
+Dictionaries
+============
+
 Exercises
 =========
 
