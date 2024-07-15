@@ -15,9 +15,32 @@ Step 1: Reproducing the article data
 ====================================
 
 Create a notebook with a function that generates two samples of two normal distributions with a difference of 0.5 in their mean, just like the article suggests.
-Initially set the number of samples to 10 vs 10.
-The two samples shall be represented as one :ref:`Polars <polars>` ``DataFrame`` with columns ``group`` (values ``A``, and ``B``) and ``value``.
-Let us assign this dataframe to the variable ``samples``.
+
+.. code-block:: python
+
+    import polars as pl
+    import altair as alt
+    alt.data_transformers.enable("vegafusion")
+    from scipy.stats import norm
+
+    def random_samples():
+        sample_0 = norm.rvs(size=10, loc=0)
+        sample_1 = norm.rvs(size=10, loc=0.5)
+
+        return pl.DataFrame({"value": sample_0, "group": "A"}).extend(
+            pl.DataFrame({"value": sample_1, "group": "B"})
+        )
+
+Initially we set the number of samples to 10 vs 10.
+
+.. dropdown:: Explanation
+
+    The first sample has a mean of 0, the second sample has a mean of 0.5.
+    The two samples are represented as one :ref:`Polars <polars>` ``DataFrame`` with columns ``group`` (values ``A``, and ``B``) and ``value``.
+
+.. admonition:: Exercise
+    
+    Assign this dataframe to the variable ``samples``.
 
 Step 2: Visualizing the data
 ============================
