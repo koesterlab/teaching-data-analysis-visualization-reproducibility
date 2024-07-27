@@ -30,6 +30,7 @@ After installing VSCode, open it and install the following extensions:
 * Jupyter
 * Rainbow csv
 * indent-rainbow
+* Black Formatter
 
 The VSCode windows contains three main areas:
 
