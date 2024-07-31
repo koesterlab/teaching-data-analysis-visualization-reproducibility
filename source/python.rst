@@ -25,10 +25,25 @@ First, create a new notebook in your IDE (assuming you use Visual Studio Code or
 
 1. Create a file named python.ipynb in the left panel.
 2. Open the file and select the Python interpreter in the top right.
-3. Read the text below while trying out all of the examples by literally typing them yourself in the notebook.
+3. Read the text below while trying out all of the examples by literally typing them yourself in the notebook, each of them in a separate cell. Use :ref:`comments` to connect examples and exercises to the text.
 
-Primitive data types
---------------------
+.. _comments::
+
+Comments
+--------
+
+Crucial for the readability, and thereby longterm sustainability, of code, are comments in natural language.
+They can be used to outline thoughts or decisions behind the code, or explain complex technical necessities that aren't immediately obvious.
+In Python, comments are written by prepending a line with a hash sign:
+
+.. code-block:: python
+
+    # this is a comment
+
+.. _data_types:
+
+Primitive data types, classes and objects
+-----------------------------------------
 
 Python supports various basic, so-called primitive, data types, namely
 
@@ -36,6 +51,10 @@ Python supports various basic, so-called primitive, data types, namely
 * decimal numbers (also called floats): ``some_value = 5.0``
 * logical values (true/false, also called booleans): ``some_value = True``
 * text (so-called strings): ``some_value = "this is my text"``
+
+Each of these data types is implemented as a so-called class.
+Classes are blueprints for objects, which are instances of a class.
+In the scope of this course, we won't define our own classes, but we will use both the primitive types/classes named above as well as some classes defined in other libraries (e.g. Polars and Altair).
 
 Operators over primitive data types
 -----------------------------------
@@ -47,6 +66,15 @@ The most important ones are:
 * comparison operators: ``==`` (equal), ``!=`` (not equal), ``<`` (less than), ``>`` (greater than), ``<=`` (less than or equal), ``>=`` (greater than or equal)
 * logical operators: ``and``, ``or``, ``not``
 * assignment operators: ``=`` (assign a value to a variable), ``+=`` (add a value to a variable), ``-=`` (subtract a value from a variable), ``*=`` (multiply a variable by a value), ``/=`` (divide a variable by a value)
+
+.. admonition:: Exercise
+
+    Not all of these operators are available for all primitive data types.
+    Try to guess and explain which ones are available for which data type.
+    Below, verify your guesses in the notebook.
+
+All of these operators can also be defined for arbitrary classes.
+One has to check which of them are available in the documentation of the respective class.
 
 Programming Python with Jupyter notebooks
 =========================================
@@ -90,6 +118,9 @@ Strings can be formatted by prepending an "f" to the string and using curly brac
     age = 42
     print(f"Hello, my name is {name} and I am {age} years old.")
 
+
+.. _control_flow:
+
 Control structures
 ==================
 
@@ -111,6 +142,24 @@ and for-loops:
         for i in range(5):
             print(f"this is the {i}-th iteration")
 
+Above, we observe a central element of Python, which is the indentation.
+Unlike in many other programming languages where indentation is solely used for improving the readability of code, indentation in Python literally has a meaning.
+It is used to define and separate blocks of code that belong together, e.g. the body of a function, a loop, or a conditional statement.
+While technically not enforced, it is best-practice to use four spaces for indentation.
+
+Modify the for-loop from above:
+
+.. code-block:: python
+    
+        for i in range(5):
+            print(f"this is the {i}-th iteration")
+        print("hello")
+
+.. admonition:: Exercise
+
+    Think about it: what happens upon execution of the loop? When is the ``hello`` printed?
+    What happens if you shift the last print statement to the same indentation level as the first?
+
 .. _functions:
 
 Functions
@@ -131,6 +180,12 @@ They are called by their name followed by parentheses (containing possible argum
     greet("Alice")
     greet("Bob")
 
+Methods
+=======
+
+Any data type, both the primitive ones and others defined by the user or certain libraries, can have so-called methods.
+Methods are functions that are called on a so-called `object`, which is a realisation of a data type.
+
 Imports
 =======
 
@@ -150,11 +205,71 @@ External packages can be found at https://pypi.org/, including links to their pa
 Tuples
 ======
 
+Tuples represent an immutable collection of items:
+
+.. code-block:: python
+
+    some_tuple = (1, 2, 3)
+
+They can be accessed by index:
+
+.. code-block:: python
+
+    print(some_tuple[0])
+
 Lists
 =====
 
+Lists represent a mutable collection of items:
+
+.. code-block:: python
+
+    some_list = [1, 2, 3]
+
+They can be accessed by index like tuples.
+In addition, they can be modified by replacing, appending, removing, or inserting items:
+
+.. code-block:: python
+
+    some_list[0] = 42
+    some_list.append(4)
+    some_list.remove(2)
+    some_list.insert(1, 23)
+
+As can be seen, the latter three operations are conducted by invoking :ref:`methods <data_types>` of the list object.
+
 Dictionaries
 ============
+
+Dictionaries represent a collection of key-value pairs:
+
+.. code-block:: python
+
+    some_dict = {"name": "Alice", "age": 42}
+
+They can be accessed by key:
+
+.. code-block:: python
+
+    print(some_dict["name"])
+
+They can be modified by updating, adding, or removing key-value pairs:
+
+.. code-block:: python
+
+    some_dict["name"] = "Bob"
+    some_dict["city"] = "New York"
+    del some_dict["age"]
+
+Iterables
+=========
+
+Objects in Python can be iterable, which means that their items can be accessed one after the other, e.g. in a for-loop.
+Lists, tuples, and dictionaries are iterable, similar to the ``range`` object that we use :ref:`above <control_flow>`.
+
+.. admonition:: Exercise
+
+
 
 Exercises
 =========
