@@ -233,4 +233,5 @@ Let us group ``df`` by the values in column ``d`` and calculate the mean of colu
     1. What happens with the the ``None`` value in column ``c``?
     2. Now, group by the year. For this purpose, first add a new column (using ``with_columns``) that holds the year of each row, derived from column ``b``.
        For this purpose, polars offers a special subset of expressions that perform operations on date or time objects, accessible by the attribute `dt`, see `the docs <https://docs.pola.rs/api/python/stable/reference/expressions/api/polars.Expr.dt.year.html>`__.
-       Second, group by this year.
+       Assign a reasonable name for this column.
+       Then, group by the year, and calculate the minimum value of column ``a`` per group (use the expression method ``min()`` for this).
