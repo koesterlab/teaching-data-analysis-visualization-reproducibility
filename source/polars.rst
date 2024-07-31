@@ -129,13 +129,37 @@ Let us select something in the example dataframe ``df``:
 
     df.select(
         pl.col("a") * 2,
-        pl.col("b").year(),
         pl.col("d").map(lambda s: s + "x"),
     )
+
+.. dropdown:: Explanation
+
+    The first expression multiplies the values in column ``a`` by 2.
+    The second expression appends an ``x`` to each value in column ``d``.
+    Returned is the modified dataframe with just the two columns.
 
 Expressions in the ``select`` or ``with_columns`` context produce so-called ``Series``, which represent columns of the dataframe.
 Both operations can contain multiple expressions, which may yield either single (scalar) values or series that have the same length as the dataframe has rows.
 In the mixed case, the scalar values are broadcasted (i.e. repeated) to the number of rows.
+
+.. admonition:: Exercise
+
+    The ``sum`` method of expressions computes the sum of all values in a column, which is obviously a single value.
+    Extend above selection by an additional expression that computes the sum of column ``a``.
+    See how the value is broadcasted to all rows because the other expressions are row-wise.
+
+While ``select`` replaces the existing columns, ``with_columns`` adds new columns:
+
+.. code-block:: python
+
+    df.with_columns(
+        (pl.col("a") * 2).alias("a_times_two"),
+        pl.col("d").map(lambda s: s + "x").alias("d_with_x"),
+    )
+
+.. dropdown:: Explanation
+
+    The ``alias`` method that expressions offer allows to assign a reasonable name to the resulting columns.
 
 Step 8: Filtering data
 ======================
@@ -143,7 +167,23 @@ Step 8: Filtering data
 Expressions in the ``filter`` context have to produce a boolean series that has the same length as the dataframe has rows.
 The rows for which the series is ``True`` are kept, while the others are removed.
 
+Let us filter the dataframe ``df`` to keep only the rows where the value in column ``c`` is at least 5.0:
+
+.. code-block:: python
+
+    df.filter(pl.col("c") >= 5.0)
+
+Step 9: Accessing individual items
+==================================
+
+The ``item`` method of dataframes returns an individual value, in particular if the dataframe has only one row and column.
+In combination with ``select`` and ``filter`` this allows to access individual items in the dataframe.
+Let us select the value in the ``a`` column where the ``d`` column is equal to ``b``:
+
+.. code-block:: python
+
+    df.filter(pl.col("d") == "b").select(pl.col("a")).item()
+
 Step 9: Grouping data
 =====================
-
 

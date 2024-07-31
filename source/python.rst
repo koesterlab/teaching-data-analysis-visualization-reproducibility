@@ -241,7 +241,7 @@ As can be seen, the latter three operations are conducted by invoking :ref:`meth
 Dictionaries
 ============
 
-Dictionaries represent a collection of key-value pairs:
+Dictionaries (in Python implemented via a built-in class called ``dict``) represent a collection of key-value pairs:
 
 .. code-block:: python
 
@@ -273,6 +273,31 @@ Lists, tuples, and dictionaries are iterable, similar to the ``range`` object th
     2. Python offers a wide range of built-in helper functions for working with iterables, e.g. ``enumerate``, ``zip``, ``sorted``, ``reversed``.
        The ``itertools`` module of the Python standard library offers further functions, e.g. ``chain`` for concatenating the items of multiple iterables.
        Look up all of those examples in the documentation and try them out in the notebook.
+
+Instantiating classes
+====================
+
+Above, for tuples, lists, and dictionaries, we have seen that Python allows to instantiate classes by specifying their literal content with a special syntax.
+This only works for certain built-in types like those shown above.
+In general, classes are instantiated by calling the class name followed by parentheses, which enclose arguments needed to create the object, just like calling functions.
+This is called a constructor.
+This also works for lists, tuples, and dictionaries, since they are classes as well.
+For example, we can convert the tuple to a list by using this mechanism:
+
+.. code-block:: python
+
+    converted_tuple = list(some_tuple)
+
+It depends on the class which arguments a constructor accepts.
+The list and tuple constructors accept and :ref:`iterable <iterables>` as argument.
+The dictionary constructor (called ``dict``) accepts a dictionary or an iterable of tuples that are interpreted as key-value pairs.
+
+.. admonition:: Exercises
+
+    1. Try to convert the list back to a tuple.
+    2. The ``dict`` class has a method ``items`` which returns an iterable of tuples representing the key-value pairs.
+       Use this method to convert the dictionary to a list of tuples.
+       Convert that list back into a dictionary using the ``dict`` constructor.
 
 Exercises
 =========
