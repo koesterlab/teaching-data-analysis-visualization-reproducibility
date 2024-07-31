@@ -1,3 +1,5 @@
+.. _datavzrd:
+
 *******************************************
 Visualization of tabular data with Datavzrd
 *******************************************

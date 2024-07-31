@@ -1,3 +1,5 @@
+.. _journalclub_viz:
+
 ************************************************
 Journal club 1: Principles of data visualization
 ************************************************

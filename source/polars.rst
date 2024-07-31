@@ -35,7 +35,7 @@ THe following steps are inspired by the official `getting started <https://docs.
 Step 1: Setup the notebook
 ==========================
 
-First, create a new file ``polars.ipynb`` under ``dataviz/chapters/polars`` and open it in VSCode.
+First, create a new file ``notebook.ipynb`` under ``dataviz/chapters/polars`` and open it in VSCode.
 In the opened notebook, select the pystats environment as the kernel with the button on the top right.
 
 Step 2: Creating a dataframe from scratch
@@ -45,7 +45,7 @@ We can create a dataframe from scratch by using the ``pl.DataFrame`` constructor
 In the first cell of the notebook, we import relevant modules:
 
 .. code-block:: python
-
+pandas
     import polars as pl
     from datetime import date
 
@@ -148,7 +148,7 @@ In the mixed case, the scalar values are broadcasted (i.e. repeated) to the numb
     Extend above selection by an additional expression that computes the sum of column ``a``.
     See how the value is broadcasted to all rows because the other expressions are row-wise.
 
-While ``select`` replaces the existing columns, ``with_columns`` adds new columns:
+While ``select`` limits the returned dataframe to the queried columns, ``with_columns`` adds new columns or replaces exising ones:
 
 .. code-block:: python
 
@@ -160,6 +160,7 @@ While ``select`` replaces the existing columns, ``with_columns`` adds new column
 .. dropdown:: Explanation
 
     The ``alias`` method that expressions offer allows to assign a reasonable name to the resulting columns.
+    If we would omit the ``alias`` invocations, the expressions would modify their columns.
 
 Step 8: Filtering data
 ======================
