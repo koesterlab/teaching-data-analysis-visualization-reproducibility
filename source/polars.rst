@@ -63,9 +63,9 @@ Then, we create a second cell with the following content:
         {
             "a": [1, 2, 3],
             "b": [
-                date(2025, 1, 1),
-                date(2025, 1, 2),
-                date(2025, 1, 3),
+                date(2019, 1, 1),
+                date(2021, 1, 2),
+                date(2023, 1, 3),
             ],
             "c": [4.0, 5.0, 6.0],
             "d": ["a", "b", "c"],
@@ -129,7 +129,7 @@ Let us select something in the example dataframe ``df``:
 
     df.select(
         pl.col("a") * 2,
-        pl.col("d").map(lambda s: s + "x"),
+        pl.col("d").map_elements(lambda s: s + "x", return_dtype=str),
     )
 
 .. dropdown:: Explanation
@@ -154,7 +154,7 @@ While ``select`` replaces the existing columns, ``with_columns`` adds new column
 
     df.with_columns(
         (pl.col("a") * 2).alias("a_times_two"),
-        pl.col("d").map(lambda s: s + "x").alias("d_with_x"),
+        pl.col("d").map_elements(lambda s: s + "x", return_dtype=str).alias("d_with_x"),
     )
 
 .. dropdown:: Explanation
@@ -184,6 +184,53 @@ Let us select the value in the ``a`` column where the ``d`` column is equal to `
 
     df.filter(pl.col("d") == "b").select(pl.col("a")).item()
 
-Step 9: Grouping data
-=====================
+.. admonition:: Exercise
 
+    The ``is_between`` method of expressions allows to filter for values that fall in a specific range.
+    Look up its usage in the Polars `API docs <https://docs.pola.rs/api/python/stable/reference/index.html>`__.
+    Use it to filter for the row where ``b`` is between the beginning of 2020 and the beginning of 2022.
+    This should be a single row.
+    Obtain the value of the column ``c`` from that row.
+
+Step 10: Grouping data
+======================
+
+Let us first append some additional data to our dataframe:
+
+.. code-block:: python
+
+    extended_df = df.vstack(
+        pl.DataFrame(
+            {
+                "a": [5, 1, 2],
+                "b": [
+                    date(2021, 1, 1),
+                    date(2019, 1, 2),
+                    date(2023, 1, 3),
+                ],
+                "c": [None, 1.1, 2.0],
+                "d": ["a", "a", "c"],
+            }
+        )
+    )
+
+.. admonition:: Exercise
+
+    1. What is the meaning and implication of the ``None`` in the ``c`` column?
+    2. Display the resulting dataframe in the variable ``df`` in your notebook.
+
+Grouping of data can be useful to e.g. calculate summary statistics per group.
+Let us group ``df`` by the values in column ``d`` and calculate the mean of column ``a`` per group:
+
+.. code-block:: python
+
+    extended_df.group_by("d").agg(
+        pl.col("c").mean()
+    )
+
+.. admonition:: Exercise
+
+    1. What happens with the the ``None`` value in column ``c``?
+    2. Now, group by the year. For this purpose, first add a new column (using ``with_columns``) that holds the year of each row, derived from column ``b``.
+       For this purpose, polars offers a special subset of expressions that perform operations on date or time objects, accessible by the attribute `dt`, see `the docs <https://docs.pola.rs/api/python/stable/reference/expressions/api/polars.Expr.dt.year.html>`__.
+       Second, group by this year.
