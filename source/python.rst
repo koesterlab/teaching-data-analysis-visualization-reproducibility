@@ -267,9 +267,12 @@ Iterables
 Objects in Python can be iterable, which means that their items can be accessed one after the other, e.g. in a for-loop.
 Lists, tuples, and dictionaries are iterable, similar to the ``range`` object that we use :ref:`above <control_flow>`.
 
-.. admonition:: Exercise
+.. admonition:: Exercises
 
-
+    1. Write a program that prints the tuple, list, and dictionary defined above by iterating over them in for-loops.
+    2. Python offers a wide range of built-in helper functions for working with iterables, e.g. ``enumerate``, ``zip``, ``sorted``, ``reversed``.
+       The ``itertools`` module of the Python standard library offers further functions, e.g. ``chain`` for concatenating the items of multiple iterables.
+       Look up all of those examples in the documentation and try them out in the notebook.
 
 Exercises
 =========
