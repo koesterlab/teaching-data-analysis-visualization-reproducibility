@@ -45,7 +45,7 @@ We can create a dataframe from scratch by using the ``pl.DataFrame`` constructor
 In the first cell of the notebook, we import relevant modules:
 
 .. code-block:: python
-pandas
+
     import polars as pl
     from datetime import date
 

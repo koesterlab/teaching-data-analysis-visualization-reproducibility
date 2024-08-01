@@ -16,7 +16,7 @@ author = 'Prof. Dr. rer. nat. Johannes Köster'
 # -- General configuration ---------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#general-configuration
 
-extensions = ['sphinxawesome_theme.highlighting', 'sphinx_design']
+extensions = ['sphinx_design']
 
 templates_path = ['_templates']
 exclude_patterns = []

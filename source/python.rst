@@ -27,7 +27,7 @@ First, create a new notebook in your IDE (assuming you use Visual Studio Code or
 2. Open the file and select the Python interpreter in the top right.
 3. Read the text below while trying out all of the examples by literally typing them yourself in the notebook, each of them in a separate cell. Use :ref:`comments` to connect examples and exercises to the text.
 
-.. _comments::
+.. _comments:
 
 Comments
 --------
@@ -261,6 +261,8 @@ They can be modified by updating, adding, or removing key-value pairs:
     some_dict["city"] = "New York"
     del some_dict["age"]
 
+.. _iterables:
+
 Iterables
 =========
 
@@ -275,7 +277,7 @@ Lists, tuples, and dictionaries are iterable, similar to the ``range`` object th
        Look up all of those examples in the documentation and try them out in the notebook.
 
 Instantiating classes
-====================
+=====================
 
 Above, for tuples, lists, and dictionaries, we have seen that Python allows to instantiate classes by specifying their literal content with a special syntax.
 This only works for certain built-in types like those shown above.
