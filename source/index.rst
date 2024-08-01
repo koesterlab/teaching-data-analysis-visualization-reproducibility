@@ -18,14 +18,14 @@ For each of the introduced topics, we will provide theoretical background and pr
    :caption: Contents:
    :hidden:
 
+   journalclub_1
    devenv
    terminal
    git
-   datavzrd
    micromamba
+   datavzrd
    python
    polars
-   journalclub_1
    altair
    journalclub_2
 
