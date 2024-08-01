@@ -148,6 +148,16 @@ In the mixed case, the scalar values are broadcasted (i.e. repeated) to the numb
     Extend above selection by an additional expression that computes the sum of column ``a``.
     See how the value is broadcasted to all rows because the other expressions are row-wise.
 
+Select can also be used to remove columns from the dataframe:
+
+.. code-block:: python
+
+    df.select(pl.col("*").exclude("c", "d"))
+
+.. admonition:: Exercise
+
+    What is the meaning of the individual elements of this statement?
+
 While ``select`` limits the returned dataframe to the queried columns, ``with_columns`` adds new columns or replaces exising ones:
 
 .. code-block:: python
