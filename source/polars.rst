@@ -72,7 +72,7 @@ Then, we create a second cell with the following content:
         }
     )
 
-..dropdown:: Explanation
+.. dropdown:: Explanation
 
     The dictionary passed to the ``pl.DataFrame`` constructor contains the column names as keys and lists of values as values.
 
