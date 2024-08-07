@@ -191,6 +191,37 @@ They are called by their name followed by parentheses (containing possible argum
     greet("Alice")
     greet("Bob")
 
+Functions always return something.
+If nothing is specified (like above), they return the special value ``None`` (which means exactly that, none).
+Alternatively, one can specify any return value, taken from whatever the function computes.
+
+Consider the following example:
+
+.. code-block:: python
+
+    def twice(value):
+        return value * 2
+
+.. admonition:: Exercise
+
+    Instead of directly returning the computation result, store it in a variable first and return the variable.
+    Is the result the same when using both versions of the function?
+
+There is an alternative way to write functions in Python, so-called lambda expressions.
+Their single purpose is to define functions on the fly (e.g. when you have to pass a function as a parameter to another function).
+They are meant only for single line statements, i.e. should have very little code in them.
+An example lambda function could be
+
+.. code-block:: python
+
+    lambda x: x * 2
+
+.. admonition:: Exercise
+
+    1. What would above function return?
+    2. Although not common, it is possible to assign a lambda expression to a variable.
+       Then, it behaves exactly like the analogous normal function. Try this out here.
+
 Methods
 =======
 
@@ -318,4 +349,3 @@ Exercises
 1. Write a program that prints the numbers from 1 to 10.
 2. Write a program that declares a variable that holds a random number between 10 and 20.
 3. Extend that program to print whether the number is even or odd.
-4. Use the `requests <https://requests.readthedocs.io>`_ package to download the file https://raw.githubusercontent.com/koesterlab/data-analysis-and-visualization/main/data/kaggle_healthcare_dataset.csv.

@@ -27,7 +27,7 @@ Create a notebook with a function that generates two samples of two normal distr
         sample_0 = norm.rvs(size=10, loc=0)
         sample_1 = norm.rvs(size=10, loc=0.5)
 
-        return pl.DataFrame({"value": sample_0, "group": "A"}).extend(
+        return pl.DataFrame({"value": sample_0, "group": "A"}).vstack(
             pl.DataFrame({"value": sample_1, "group": "B"})
         )
 
@@ -85,7 +85,7 @@ Let's do that now:
     def get_bootstrap(samples):
         group_a = samples.filter(pl.col("group") == "A")
         group_b = samples.filter(pl.col("group") == "B")
-        return group_a.sample(n=group_a.shape[0], with_replacement=True).extend(
+        return group_a.sample(n=group_a.shape[0], with_replacement=True).vstack(
             group_b.sample(n=group_b.shape[0], with_replacement=True)
         )
 

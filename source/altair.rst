@@ -44,7 +44,7 @@ In this chapter, we will use the ``cars`` dataset, but modify it a bit to become
     ).with_columns(
         pl.col("Year").dt.year()
     ).select(
-        pl.col("*").name.to_lowercase()
+        pl.col("*").name.map(lambda name: name.lower().replace("_", " "))
     )
 
 .. admonition:: Exercise
@@ -62,7 +62,7 @@ Let us now create our first plot (in Altair called a chart):
 .. code-block:: python
 
     alt.Chart(cars).mark_point().encode(
-        alt.X("miles_per_gallon")
+        alt.X("miles per gallon")
     )
 
 As can be seen, the point marks overlap to a large extend, somehow hiding the actual structure of the data.
@@ -71,7 +71,7 @@ A more appropriate mark for such a one-dimensional plot is ``mark_tick``:
 .. code-block:: python
 
     alt.Chart(cars).mark_tick().encode(
-        alt.X("miles_per_gallon")
+        alt.X("miles per gallon")
     )
 
 As can be seen, it becomes easier to distinguish the dense regions from sparser ones since individual marks don't occupy so much horizontal space.
@@ -88,7 +88,7 @@ Let us now create a two-dimensional chart, namely a classical so-called scatter 
 .. code-block:: python
 
     alt.Chart(cars).mark_point().encode(
-        alt.X("miles_per_gallon"),
+        alt.X("miles per gallon"),
         alt.Y("horsepower"),
     )
 
@@ -103,7 +103,7 @@ Let us now add a third dimension to the scatter plot above, by encoding the ``or
 .. code-block:: python
 
     alt.Chart(cars).mark_point().encode(
-        alt.X("miles_per_gallon"),
+        alt.X("miles per gallon"),
         alt.Y("horsepower"),
         alt.Color("origin"),
     )
@@ -114,7 +114,7 @@ In contrast, using a quantitative column for the color leads to Altair choosing 
 .. code-block:: python
 
     alt.Chart(cars).mark_point().encode(
-        alt.X("miles_per_gallon"),
+        alt.X("miles per gallon"),
         alt.Y("horsepower"),
         alt.Color("acceleration"),
     )
@@ -133,7 +133,7 @@ Consider the following example:
 .. code-block:: python
 
     alt.Chart(cars).mark_point().encode(
-        alt.X("miles_per_gallon"),
+        alt.X("miles per gallon"),
         alt.Y("horsepower"),
         alt.Color("cylinders"),
     )
@@ -145,7 +145,7 @@ We can tell Altair that cylinders are "ordinal" instead, meaning that they are s
 .. code-block:: python
 
     alt.Chart(cars).mark_point().encode(
-        alt.X("miles_per_gallon"),
+        alt.X("miles per gallon"),
         alt.Y("horsepower"),
         alt.Color("cylinders").type("ordinal"),
     )
@@ -163,12 +163,12 @@ In the first chart (:ref:`altair_one_dimensional`) we have seen that overlapping
 One way to mitigate this issue is to bin the data, i.e., to group data points into bins and then visualize the number of data points in each bin.
 This is also known as a histogram.
 
-Let us create a histogram for the ``miles_per_gallon`` column:
+Let us create a histogram for the ``miles per gallon`` column:
 
 .. code-block:: python
 
     alt.Chart(cars).mark_bar().encode(
-        alt.X("miles_per_gallon").bin(maxbins=30),
+        alt.X("miles per gallon").bin(maxbins=30),
         alt.Y("count()"),
     )
 
@@ -182,7 +182,7 @@ We can also color the histogram bars by the ``origin`` of the car:
 .. code-block:: python
 
     alt.Chart(cars).mark_bar().encode(
-        alt.X("miles_per_gallon").bin(maxbins=30),
+        alt.X("miles per gallon").bin(maxbins=30),
         alt.Y("count()"),
         alt.Color("origin"),
     )
@@ -195,14 +195,14 @@ Step 8: Layering and tooltips
 =============================
 
 Altair allows to layer multiple charts on top of each other.
-Let us use this functionality to better visualize the difference in the distribution of ``miles_per_gallon`` per origin.
+Let us use this functionality to better visualize the difference in the distribution of ``miles per gallon`` per origin.
 
 First, we represent the histogram via colors and use the y-axis for the origin:
 
 .. code-block:: python
 
     alt.Chart(cars).mark_rect(tooltip=True).encode(
-        alt.X("miles_per_gallon").bin(maxbins=30),
+        alt.X("miles per gallon").bin(maxbins=30),
         alt.Y("origin"),
         alt.Color("count()"),
     )
@@ -220,11 +220,11 @@ Further, it is possible to specialize charts, i.e. create a base chart and then 
     base = alt.Chart(cars)
 
     base.mark_rect(tooltip=True).encode(
-        alt.X("miles_per_gallon").bin(maxbins=30),
+        alt.X("miles per gallon").bin(maxbins=30),
         alt.Y("origin"),
         alt.Color("count()"),
     ) + base.mark_tick(size=1, color="black", opacity=0.5).encode(
-        alt.X("miles_per_gallon"),
+        alt.X("miles per gallon"),
         alt.Y("origin"),
     )
 
@@ -246,7 +246,7 @@ If the actual counts per bin are particularly important, we can instead return t
 .. code-block:: python
 
     alt.Chart(cars).mark_bar().encode(
-        alt.X("miles_per_gallon").bin(maxbins=30),
+        alt.X("miles per gallon").bin(maxbins=30),
         alt.Y("count()"),
     ).facet(row="origin")
 
@@ -258,7 +258,7 @@ First, we can limit the height per subplot:
 .. code-block:: python
 
     alt.Chart(cars).mark_bar().encode(
-        alt.X("miles_per_gallon").bin(maxbins=30),
+        alt.X("miles per gallon").bin(maxbins=30),
         alt.Y("count()"),
     ).properties(height=100).facet(row="origin")
 
@@ -272,7 +272,7 @@ By using the ``resolve_scale`` method of the faceted chart, we can change this b
 .. code-block:: python
 
     alt.Chart(cars).mark_bar().encode(
-        alt.X("miles_per_gallon").bin(maxbins=30),
+        alt.X("miles per gallon").bin(maxbins=30),
         alt.Y("count()"),
     ).properties(height=100).facet(row="origin").resolve_scale(y="independent")
 
@@ -286,12 +286,12 @@ Step 10: Two-dimensional binning
 Histograms can also be generated across two dimensions.
 This marks an alternative to the scatter plot.
 It has the advantage to better show the differences in very dense regions.
-Let us create a two-dimensional histogram for the ``miles_per_gallon`` and ``horsepower`` columns:
+Let us create a two-dimensional histogram for the ``miles per gallon`` and ``horsepower`` columns:
 
 .. code-block:: python
 
     alt.Chart(cars).mark_rect().encode(
-        alt.X("miles_per_gallon").bin(maxbins=30),
+        alt.X("miles per gallon").bin(maxbins=30),
         alt.Y("horsepower").bin(maxbins=30),
         alt.Color("count()"),
     )
@@ -307,11 +307,11 @@ Again, it can be beneficial to superimpose the actual data:
     base = alt.Chart(cars)
 
     base.mark_rect(tooltip=True).encode(
-        alt.X("miles_per_gallon").bin(maxbins=30).title("miles per gallon"),
+        alt.X("miles per gallon").bin(maxbins=30).title("miles per gallon"),
         alt.Y("horsepower").bin(maxbins=30),
         alt.Color("count()"),
     ) + base.mark_circle(size=2, opacity=0.5, color="black").encode(
-        alt.X("miles_per_gallon"),
+        alt.X("miles per gallon"),
         alt.Y("horsepower"),
     )
 
@@ -334,7 +334,7 @@ Let us start with displaying the mean miles per gallon per year as a simple line
 
     alt.Chart(cars).mark_line().encode(
         alt.X("year", type="ordinal"),
-        alt.Y("mean(miles_per_gallon)"),
+        alt.Y("mean(miles per gallon)"),
     )
 
 .. admonition:: Exercise
@@ -349,7 +349,7 @@ Let us now stratify the chart per origin:
 
     alt.Chart(cars).mark_line().encode(
         alt.X("year", type="ordinal"),
-        alt.Y("mean(miles_per_gallon)"),
+        alt.Y("mean(miles per gallon)"),
         alt.Color("origin"),
     )
 
@@ -367,12 +367,12 @@ Altair supports the calculation of confidence intervals for the mean via bootstr
 
     base.mark_area(opacity=0.4).encode(
         alt.X("year", type="ordinal"),
-        alt.Y("ci0(miles_per_gallon)"),
-        alt.Y2("ci1(miles_per_gallon)"),
+        alt.Y("ci0(miles per gallon)"),
+        alt.Y2("ci1(miles per gallon)"),
         alt.Color("origin"),
     ) + base.mark_line(point=True).encode(
         alt.X("year", type="ordinal"),
-        alt.Y("mean(miles_per_gallon)").title("miles per gallon (mean, CI)"),
+        alt.Y("mean(miles per gallon)").title("miles per gallon (mean, CI)"),
         alt.Color("origin"),
     )
 
@@ -381,6 +381,8 @@ Altair supports the calculation of confidence intervals for the mean via bootstr
     1. Explain the individual statements in the code above. In particular, what is the purpose of ``point=True`` and why is it important here?
     2. What is the difference between the ``ci0`` and ``ci1`` aggregation functions?
     3. Why do we have to set a title for the y-axis?
+    5. Since the mean and the confidence interval are just summary statistics of the actual data, it is always a good idea to also include the actual data points in the plot.
+       Add a layer that shows the actual data points as ``mark_circle`` to the plot above.
     4. Altair supports interactivity in plots. This can be configured in great detail, which is however out of scope for this tutorial. Basic interactivity can however be generated for any plot by calling the method ``interactive()`` on the chart object. Try it out here.
 
 Step 12: Correlation analysis
@@ -397,5 +399,33 @@ The most important question to ask when striving to calculate a correlation is w
     Otherwise spearman correlation should be used, which instead measures to what extend an increase in :math:`x` leads :math:`y` to increase (correlation) or decrease (anticorrelation).
     Make your choice and store the desired measure in the variable ``correlation_method`` (either ``pearson`` or ``spearman``) in your notebook.
 
-Let us now calculate the correlation coefficient between horsepower and miles per gallon with the chosen method using :ref:`Polars <polars>`:
+Let us now calculate the correlation coefficient between horsepower and miles per gallon with the chosen method using :ref:`Polars <polars>`.
 
+.. code-block:: python
+
+    correlation_coeff = cars.select(
+        pl.corr("miles per gallon", "horsepower", method=correlation_method).alias(
+            "correlation"
+        )
+    )
+
+    alt.Chart(
+        cars,
+        title=alt.Title(
+            "Relationship between horsepower and miles per gallon",
+            subtitle=f"spearman correlation: {correlation_coeff.item():.2f}",
+        ),
+    ).mark_point().encode(
+        alt.X("miles per gallon"),
+        alt.Y("horsepower"),
+    )
+
+.. admonition:: Exercise
+
+    We display the correlation coefficient in the title of the plot, using string formatting.
+    Check the `Python docs <https://docs.python.org/3/tutorial/inputoutput.html#fancier-output-formatting>`__ to understand what we are doing here and what effect it has on the displayed correlation coefficient.
+
+However, the data considered here is still a sample of the true set of cars offered in the considered time frame.
+Hence, similar to above, we can use the bootstrap strategy to obtain **an approximation** of the posterior distribution of the correlation.
+The more data points we have, the better this approximation will be.
+It is not a perfect approach, but better than just showing a single correlation coefficient.
