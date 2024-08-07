@@ -29,6 +29,10 @@ In the first cell of the new notebook, let us import some modules we need for th
     import altair as alt
     import polars as pl
     from vega_datasets import data
+    alt.data_transformers.enable("vegafusion")
+
+The latter enables altair to perform some optimizations on the data before plotting.
+This is always a good idea, since it improves the ability of the generated plots to deal with large datasets.
 
 
 Step 2: Obtain test data
@@ -50,7 +54,7 @@ In this chapter, we will use the ``cars`` dataset, but modify it a bit to become
 .. admonition:: Exercise
 
     1. What happens in each of the statements above?
-    2. What is the reason for the ``with_columns`` and ``select`` statements?
+    2. What is the reason for the ``with_columns`` and ``select`` statements (also look up the meaning of ``lower()`` and ``replace()`` in the `Python docs <https://docs.python.org/3/library/stdtypes.html#string-methods>`__? Try out how the dataframe looks like without them.
 
 .. _altair_one_dimensional:
 
@@ -429,3 +433,63 @@ However, the data considered here is still a sample of the true set of cars offe
 Hence, similar to above, we can use the bootstrap strategy to obtain **an approximation** of the posterior distribution of the correlation.
 The more data points we have, the better this approximation will be.
 It is not a perfect approach, but better than just showing a single correlation coefficient.
+
+We first create the bootstrapped data via 
+
+.. code-block:: python
+
+    def bootstrap(df):
+        return df.sample(cars.shape[0], with_replacement=True)
+
+    correlation_dist = pl.concat(
+        [
+            bootstrap(cars).select(pl.corr("miles per gallon", "horsepower", method=correlation_method).alias(
+                "correlation"
+            ))
+            for _ in range(10000)
+        ]
+    )
+
+
+.. admonition:: Exercise
+
+    As always, try to explain the statements above.
+    Display the contents of the dataframe correlation_dist.
+    What does it contain, why is that helpful in this case?
+
+Next, let us use this dataframe in combination with the scatter plot from before to show both the data points and the empirical probability distribution of the correlation coefficient.
+
+.. code-block:: python
+
+    alt.Chart(cars).mark_point().encode(
+        alt.X("miles per gallon"),
+        alt.Y("horsepower"),
+    ) & alt.Chart(correlation_dist).mark_bar().encode(
+        alt.X("correlation")
+        .bin(maxbins=30)
+        alt.Y("count()")
+    )
+
+In principle, this already shows what we want (we will interpret it later).
+However, the visuals are not yet optimal.
+Let us tune the result a bit:
+
+.. code-block:: python
+
+    alt.Chart(cars).mark_point().encode(
+        alt.X("miles per gallon"),
+        alt.Y("horsepower"),
+    ) & alt.Chart(correlation_dist).mark_bar().encode(
+        alt.X("correlation")
+        .bin(maxbins=30)
+        .title("correlation (bootstrapped)")
+        .axis(labelAngle=-90),
+        alt.Y("count()").axis(None),
+    ).properties(
+        height=50
+    )
+
+.. admonition:: Exercise
+
+    What did we change? Why is that a good idea?
+

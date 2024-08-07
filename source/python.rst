@@ -343,9 +343,41 @@ The dictionary constructor (called ``dict``) accepts a dictionary or an iterable
        Use this method to convert the dictionary to a list of tuples.
        Convert that list back into a dictionary using the ``dict`` constructor.
 
+List comprehension
+==================
+
+In addition to explicitly adding the values to a list when constructing it, Python offers so-called *list comprehension*, i.e. a way to generate a list programatically.
+We can for example use list comprehension in combination with ``range``:
+
+.. code-block:: python
+
+    numbers = [x for x in range(20)]
+
+Obviously, we can compute stuff inside of such list comprehensions, e.g. the square root of those values:
+
+
+.. code-block:: python
+
+    import math
+
+    numbers = [math.sqrt(x) for x in range(1, 20)]
+
+.. admonition:: Exercise
+
+    Why did we change the arguments to ``range`` (check the `Python docs <https://docs.python.org/3/library/stdtypes.html#range>`__)?
+
+List comprehension also allows to conditionally skip items, consider this obviously artificial example:
+
+.. code-block:: python
+
+    import math
+
+    numbers = [math.sqrt(x) for x in range(1, 20) if x > 10]
+
 Exercises
 =========
 
 1. Write a program that prints the numbers from 1 to 10.
-2. Write a program that declares a variable that holds a random number between 10 and 20.
+2. Write a program that declares a variable that holds a random number between 10 and 20 (look up how to do that in the `Python docs <https://docs.python.org/3/library/random.html#functions-for-integers>`__).
 3. Extend that program to print whether the number is even or odd.
+4. Move the code to make the decision about even or odd into a function that you then use.
