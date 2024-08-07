@@ -363,7 +363,7 @@ However, we only have a sample of the real set of cars per country in this datas
 Hence, the true mean might be actually different.
 At this point, we can't make assumptions about the theoretical distribution function of miles per gallon in each country.
 However, we can instead use the `bootstrap <https://en.wikipedia.org/wiki/Bootstrapping_(statistics)>`__ method to estimate the confidence intervals of the mean (also see :ref:`journalclub_bootstrap`).
-Altair supports the calculation of confidence intervals for the mean via bootstrapping via the ``ci0`` and ``ci1`` aggregation functions:
+Altair supports the calculation of the 95% confidence interval for the mean via bootstrapping via the ``ci0`` and ``ci1`` aggregation functions:
 
 .. code-block:: python
 
