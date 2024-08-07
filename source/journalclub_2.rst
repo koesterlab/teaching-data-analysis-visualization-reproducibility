@@ -62,6 +62,8 @@ We create a function that calculates the effect size between the two by calculat
             means.filter(pl.col("group") == "A").select(pl.col("value"))
         ).item()
 
+.. _journalclub_bootstrap:
+
 Step 4: Calculate a bootstrap sample
 ====================================
 

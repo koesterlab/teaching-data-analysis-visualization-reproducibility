@@ -78,6 +78,8 @@ As can be seen, it becomes easier to distinguish the dense regions from sparser 
 Nevertheless, there are still overlapping marks.
 Hence, we will return to this chart later (:ref:`altair_binning`), making it even more informative using more involved techniques.
 
+.. _altair_scatter:
+
 Step 4: A two-dimensional chart
 ===============================
 
@@ -277,4 +279,123 @@ By using the ``resolve_scale`` method of the faceted chart, we can change this b
 .. admonition:: Exercise
 
     With independent scales on the y-axis, what should be kept in mind when publishing such a plot?
+
+Step 10: Two-dimensional binning
+================================
+
+Histograms can also be generated across two dimensions.
+This marks an alternative to the scatter plot.
+It has the advantage to better show the differences in very dense regions.
+Let us create a two-dimensional histogram for the ``miles_per_gallon`` and ``horsepower`` columns:
+
+.. code-block:: python
+
+    alt.Chart(cars).mark_rect().encode(
+        alt.X("miles_per_gallon").bin(maxbins=30),
+        alt.Y("horsepower").bin(maxbins=30),
+        alt.Color("count()"),
+    )
+
+Alternatives to such a two-dimensional heatmap are kde (kernel density estimation) plots.
+However, these are more complex to create while adding little to no additional value.
+In contrast, heatmaps are easy to understand and directly interpretable, without any hidden effects.
+
+Again, it can be beneficial to superimpose the actual data:
+
+.. code-block:: python
+
+    base = alt.Chart(cars)
+
+    base.mark_rect(tooltip=True).encode(
+        alt.X("miles_per_gallon").bin(maxbins=30).title("miles per gallon"),
+        alt.Y("horsepower").bin(maxbins=30),
+        alt.Color("count()"),
+    ) + base.mark_circle(size=2, opacity=0.5, color="black").encode(
+        alt.X("miles_per_gallon"),
+        alt.Y("horsepower"),
+    )
+
+.. admonition:: Exercise
+
+    1. Explain the individual statements in the code above.
+    2. An alternative to displaying count information via the color is to use two dimensions instead.
+       This can improve the interpretability because it becomes easier to distinguish different values.
+       Change the encoding from ``mark_rect`` to ``mark_point`` and add a channel ``alt.Size`` that also encodes the count.
+       What is better, what is worse? Are the individual data points still necessary in this case?
+
+Step 11: Other aggregation methods
+==================================
+
+Let us have a look at the relationship between the miles per gallon and the year of production.
+Altair offers the ability to on the fly calculate e.g. the mean over a column/field (many other aggregation functions are `available <https://altair-viz.github.io/user_guide/encodings/index.html#aggregation-functions>`__).
+Let us start with displaying the mean miles per gallon per year as a simple line chart:
+
+.. code-block:: python
+
+    alt.Chart(cars).mark_line().encode(
+        alt.X("year", type="ordinal"),
+        alt.Y("mean(miles_per_gallon)"),
+    )
+
+.. admonition:: Exercise
+
+    Here, it is important to explicitly inform Altair about the type of the year column.
+    It is not continuous, but ordinal instead.
+    What happens if you remove the type annotation?
+
+Let us now stratify the chart per origin:
+
+.. code-block:: python
+
+    alt.Chart(cars).mark_line().encode(
+        alt.X("year", type="ordinal"),
+        alt.Y("mean(miles_per_gallon)"),
+        alt.Color("origin"),
+    )
+
+Let's take a step back and think about the message of this plot.
+It postulates that the mean miles per gallon of cars has increased over the years, in all three countries.
+However, we only have a sample of the real set of cars per country in this dataset.
+Hence, the true mean might be actually different.
+At this point, we can't make assumptions about the theoretical distribution function of miles per gallon in each country.
+However, we can instead use the `bootstrap <https://en.wikipedia.org/wiki/Bootstrapping_(statistics)>`__ method to estimate the confidence intervals of the mean (also see :ref:`journalclub_bootstrap`).
+Altair supports the calculation of confidence intervals for the mean via bootstrapping via the ``ci0`` and ``ci1`` aggregation functions:
+
+.. code-block:: python
+
+    base = alt.Chart(cars)
+
+    base.mark_area(opacity=0.4).encode(
+        alt.X("year", type="ordinal"),
+        alt.Y("ci0(miles_per_gallon)"),
+        alt.Y2("ci1(miles_per_gallon)"),
+        alt.Color("origin"),
+    ) + base.mark_line(point=True).encode(
+        alt.X("year", type="ordinal"),
+        alt.Y("mean(miles_per_gallon)").title("miles per gallon (mean, CI)"),
+        alt.Color("origin"),
+    )
+
+.. admonition:: Exercise
+
+    1. Explain the individual statements in the code above. In particular, what is the purpose of ``point=True`` and why is it important here?
+    2. What is the difference between the ``ci0`` and ``ci1`` aggregation functions?
+    3. Why do we have to set a title for the y-axis?
+    4. Altair supports interactivity in plots. This can be configured in great detail, which is however out of scope for this tutorial. Basic interactivity can however be generated for any plot by calling the method ``interactive()`` on the chart object. Try it out here.
+
+Step 12: Correlation analysis
+=============================
+
+The scatter plot we created before revealed a releationship between horsepower and miles per gallon.
+We can quantify the strength of this relationship by calculating the correlation coefficient.
+The most important question to ask when striving to calculate a correlation is whether the relationship (let's say between two variables :math:`x` and :math:`y`) is expected to be linear (i.e. :math:`y = a \cdot x + b` with :math:`a` and :math:`b` being constant) or not.
+
+.. admonition:: Exercise
+
+    Revisit the plot of :ref:`altair_scatter`, is this a linear relationship?
+    If the relationship is expected to be linear, the Pearson correlation coefficient is the most appropriate measure.
+    Otherwise spearman correlation should be used, which instead measures to what extend an increase in :math:`x` leads :math:`y` to increase (correlation) or decrease (anticorrelation).
+    Make your choice and store the desired measure in the variable ``correlation_method`` (either ``pearson`` or ``spearman``) in your notebook.
+
+Let us now calculate the correlation coefficient between horsepower and miles per gallon with the chosen method using :ref:`Polars <polars>`:
 
