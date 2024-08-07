@@ -357,12 +357,25 @@ Let us now stratify the chart per origin:
         alt.Color("origin"),
     )
 
-Let's take a step back and think about the message of this plot.
-It postulates that the mean miles per gallon of cars has increased over the years, in all three countries.
-However, we only have a sample of the real set of cars per country in this dataset.
-Hence, the true mean might be actually different.
-At this point, we can't make assumptions about the theoretical distribution function of miles per gallon in each country.
-However, we can instead use the `bootstrap <https://en.wikipedia.org/wiki/Bootstrapping_(statistics)>`__ method to estimate the confidence intervals of the mean (also see :ref:`journalclub_bootstrap`).
+.. admonition:: Bootstrapping
+
+    Let's take a step back and think about the message of this plot.
+    It postulates that the mean miles per gallon of cars has increased over the years, in all three countries.
+    However, we only have a sample of the real set of cars per country in this dataset.
+    Hence, the true mean might be actually different.
+    What could be done?
+    Instead of having a single sample, we could instead obtain many samples.
+    This would allow us to estimate the uncertainty of the mean miles per gallon per year, and the estimate would be more accurate the more samples we would take.
+    Imagine this dataset would not be cars but some kind of measurement.
+    Hence, it might be infeasible to obtain more samples.
+    Another option is to have profound statistical knowledge about the theoretical distribution of the data the sample was generated from (and the appropriate training).
+    Then, one can create a statistical model that allows to reason about the uncertainty given the observed sample.
+    However, this is not the case here.
+    If the sample that we have consists of sufficiently many independent measurements, we can instead use `bootstrapping <https://en.wikipedia.org/wiki/Bootstrapping_(statistics)>`__ to estimate the uncertainty of the mean.
+    Bootstrapping applies a trick: it draws many samples with replacement from the original sample.
+    Values that are abundant in the original sample with more often occur in the bootstrapped samples than rare values.
+    If one then calculates the summary statistic or any other measure (in this case the mean) on each bootstrapped sample and plots those values, one obtains an approximation of the distribution of the summary statistic as if it would have been created by really creating many sufficiently new samples.
+
 Altair supports the calculation of the 95% confidence interval for the mean via bootstrapping via the ``ci0`` and ``ci1`` aggregation functions:
 
 .. code-block:: python
