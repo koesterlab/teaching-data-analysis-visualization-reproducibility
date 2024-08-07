@@ -379,5 +379,5 @@ Exercises
 
 1. Write a program that prints the numbers from 1 to 10.
 2. Write a program that declares a variable that holds a random number between 10 and 20 (look up how to do that in the `Python docs <https://docs.python.org/3/library/random.html#functions-for-integers>`__).
-3. Extend that program to print whether the number is even or odd.
+3. Extend that program to print whether the number is even or odd (use the modulo operator for that).
 4. Move the code to make the decision about even or odd into a function that you then use.
