@@ -9,7 +9,7 @@ This part of the course is inspired by the `Polars Getting Started Guide <https:
 Polars is a programming library for reading, writing, and manipulating tabular data.
 It is a fast and efficient library that is written in Rust and has so-called Python bindings which offer the ability to use it from within Python code.
 For this and the following chapter, we first create a micromamba environment that contains the necessary software tools.
-Create the file ``dataviz/envs/pystats.yaml`` with the following content:
+Create the file ``envs/pystats.yaml`` with the following content:
 
 .. code-block:: yaml
 
@@ -35,7 +35,7 @@ THe following steps are inspired by the official `getting started <https://docs.
 Step 1: Setup the notebook
 ==========================
 
-First, create a new file ``notebook.ipynb`` under ``dataviz/chapters/polars`` and open it in VSCode.
+First, create a new file ``notebook.ipynb`` under ``chapters/polars`` and open it in VSCode.
 In the opened notebook, select the pystats environment as the kernel with the button on the top right.
 
 Step 2: Creating a dataframe from scratch

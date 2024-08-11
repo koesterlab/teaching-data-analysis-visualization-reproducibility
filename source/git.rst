@@ -15,16 +15,19 @@ We will now learn how to set up a new Git repository and how to use it to manage
 Step 1: Setting up a new Git repository for this course
 =======================================================
 
-1. Open VSCode in a new and empty folder for this course (named ``dataviz``).
+We will in the following assume that the rest of the course is conducted in subfolders of the folder ``dataviz`` on some machine.
+If you run this course via Gitpod, we simply assume that the working directory in the gitpod is this folder ``dataviz``.
+
+1. If you are **not working in Gitpod**, open VSCode in a new and empty folder for this course (named ``dataviz``).
 2. Click on the "Source Control" icon in the sidebar on the left and select "Initialize Repository".
 
-Now, you have set up a new Git repository in the folder ``dataviz``.
+Now, you have set up a new Git repository in that folder.
 Any changes you make to this folder will occur in the source control view in the VSCode sidebar.
 
 Step 2: Making changes to your codebase
 =======================================
 
-1. Create a new file in the folder ``dataviz`` and name it ``README.txt``.
+1. Create a new file and name it ``README.txt``.
 2. Write some text into the file, briefly mentioning that this repository contains your exercises for the data analysis and visualization course.
 
 You will see that the file appears in the source control view in the sidebar.

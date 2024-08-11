@@ -19,7 +19,7 @@ This chapter is heavily inspired by the official `Altair tutorial <https://altai
 Step 1: Setup the notebook
 ==========================
 
-First, create a new file ``notebook.ipynb`` under ``dataviz/chapters/altair`` and open it in VSCode.
+First, create a new file ``notebook.ipynb`` under ``chapters/altair`` and open it in VSCode.
 In the opened notebook, select the :ref:`pystats environment <polars>` as the kernel with the button on the top right.
 
 In the first cell of the new notebook, let us import some modules we need for this chapter:
