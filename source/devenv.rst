@@ -21,18 +21,13 @@ Choosing a suitable development environment can dramatically increase the produc
 There are numerous options available.
 In this course, we will use Visual Studio Code (VSCode), which is one of the most popular options and offers numerous useful extensions for our tasks.
 
-If you are on Windows, follow `these <https://code.visualstudio.com/docs/remote/wsl>`_ instructions to install VSCode in combination with WSL.
-Otherwise, just install `VSCode <https://code.visualstudio.com>`__.
+* If you are on Windows, follow `these <https://code.visualstudio.com/docs/remote/wsl>`_ instructions to install VSCode in combination with WSL.
+* Otherwise, just install `VSCode <https://code.visualstudio.com>`__.
+* Finally, you can also run this course in the browser, using Gitpod.
+  For this purpose, first create an account on Github (a code hosting platform).
+  Then, open the so-called `Gitpod workspace for this course <https://gitpod.io/new/#https://github.com/koesterlab/teaching-data-analysis-visualization-reproducibility>`__.
 
-After installing VSCode, open it and install the following extensions:
-
-* Python
-* Jupyter
-* Rainbow csv
-* indent-rainbow
-* Black Formatter
-
-The VSCode windows contains three main areas:
+The VSCode window contains three main areas:
 
 .. image:: https://code.visualstudio.com/assets/home/home-screenshot-mac-2x-v2.png
    :alt: VSCode window
@@ -42,3 +37,11 @@ The VSCode windows contains three main areas:
 2. The main area in the right center is where you edit files or notebooks.
 3. The area at the bottom right shows a so-called terminal, which allows you to run commands directly from within VSCode.
    It might be hidden initially, but can be opened by clicking on the "Terminal" menu and selecting "New Terminal".
+
+Install the following extensions in VSCode:
+
+* Python
+* Jupyter
+* Rainbow csv
+* indent-rainbow
+* Black Formatter
