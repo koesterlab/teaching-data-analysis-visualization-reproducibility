@@ -18,7 +18,7 @@ You can list the files and folders in the current directory by typing:
 
     ls
 
-Most commands of the terminal have additional options, which can be view via adding the ``--help`` option.
+Most commands of the terminal have additional options, which can be viewed via adding the ``--help`` option.
 
 .. code-block:: bash
 

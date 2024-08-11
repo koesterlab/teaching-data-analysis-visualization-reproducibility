@@ -77,7 +77,7 @@ While this can be fine in certain cases, it is certainly not when you want to en
 
 To solve this, we can create a file that contains the exact software versions, called an environment file.
 We do that for the example from before.
-Create a folder ``envs`` that holds files related to this chapter, and in there create the file ``datavzrd.yaml`` with the following content:
+Create a folder ``envs`` that holds micromamba environment files related to this course, and in there create the file ``datavzrd.yaml`` with the following content:
 
 .. code-block:: yaml
 
