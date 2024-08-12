@@ -6,7 +6,9 @@ tasks:
   - name: Setup environment
     command: |
       echo "setup environment, please wait..."
-      rm -rf * .[!.]* # clean up workspace
+      if [ -f .vanilla_indicator ]; then
+          rm -rf * .[!.]* # clean up workspace
+      fi
       echo "alias show-server-url='echo https://0.0.0.0:8000'" >> ~/.bashrc
       source ~/.bashrc &> /tmp/log-source-bashrc.txt
       echo "done, ready to go!"
