@@ -23,6 +23,7 @@ Create the file ``envs/pystats.yaml`` with the following content:
       - vegafusion =1.6
       - vegafusion-python-embed =1.6
       - vl-convert-python =1.5
+      - vega_datasets =0.9
       - ipykernel =6.29
       - scipy =1.14
 
@@ -145,7 +146,7 @@ In the mixed case, the scalar values are broadcasted (i.e. repeated) to the numb
 .. admonition:: Exercise
 
     The ``sum`` method of expressions computes the sum of all values in a column, which is obviously a single value.
-    Extend above selection by an additional expression that computes the sum of column ``a``.
+    Extend above selection by an additional expression that computes the sum of column ``c``.
     See how the value is broadcasted to all rows because the other expressions are row-wise.
 
 Select can also be used to remove columns from the dataframe:
@@ -189,7 +190,7 @@ Step 9: Accessing individual items
 
 The ``item`` method of dataframes returns an individual value, in particular if the dataframe has only one row and column.
 In combination with ``select`` and ``filter`` this allows to access individual items in the dataframe.
-Let us select the value in the ``a`` column where the ``d`` column is equal to ``b``:
+Let us select the value in the ``a`` column where the ``d`` column contains the value ``b``:
 
 .. code-block:: python
 
@@ -199,7 +200,7 @@ Let us select the value in the ``a`` column where the ``d`` column is equal to `
 
     The ``is_between`` method of expressions allows to filter for values that fall in a specific range.
     Look up its usage in the Polars `API docs <https://docs.pola.rs/api/python/stable/reference/index.html>`__.
-    Use it to filter for the row where ``b`` is between the beginning of 2020 and the beginning of 2022.
+    Use it to filter for the row where the column ``b`` is between the beginning of 2020 (``date(2020, 1, 1)``) and the beginning of 2022 (``date(2022, 1, 1)``).
     This should be a single row.
     Obtain the value of the column ``c`` from that row.
 
@@ -228,10 +229,10 @@ Let us first append some additional data to our dataframe:
 .. admonition:: Exercise
 
     1. What is the meaning and implication of the ``None`` in the ``c`` column?
-    2. Display the resulting dataframe in the variable ``df`` in your notebook.
+    2. Display the resulting dataframe in the variable ``extended_df`` in your notebook.
 
 Grouping of data can be useful to e.g. calculate summary statistics per group.
-Let us group ``df`` by the values in column ``d`` and calculate the mean of column ``a`` per group:
+Let us group ``extended_df`` by the values in column ``d`` and calculate the mean of column ``a`` per group:
 
 .. code-block:: python
 

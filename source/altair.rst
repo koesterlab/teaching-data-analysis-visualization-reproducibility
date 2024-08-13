@@ -179,7 +179,7 @@ Let us create a histogram for the ``miles per gallon`` column:
 .. admonition:: Exercise
 
     1. Compare this to the code in :ref:`altair_one_dimensional`. What is the difference, how does it affect the resulting plot?
-    2. The ``bin`` method offers various additional parameters (hidden `here <https://altair-viz.github.io/user_guide/generated/core/altair.BinParams.html#altair.BinParams>`__ in the Altair documentation. Try to change the ``maxbins`` parameter to see how it affects the plot.
+    2. The ``bin`` method offers various additional parameters (hidden `here <https://altair-viz.github.io/user_guide/generated/core/altair.BinParams.html#altair.BinParams>`__ in the Altair documentation). Try to change the ``maxbins`` parameter to see how it affects the plot.
 
 We can also color the histogram bars by the ``origin`` of the car:
 
@@ -373,7 +373,7 @@ Let us now stratify the chart per origin:
     However, this is not the case here.
     If the sample that we have consists of sufficiently many independent measurements, we can instead use `bootstrapping <https://en.wikipedia.org/wiki/Bootstrapping_(statistics)>`__ to estimate the uncertainty of the mean.
     Bootstrapping applies a trick: it draws many samples with replacement from the original sample.
-    Values that are abundant in the original sample with more often occur in the bootstrapped samples than rare values.
+    Values that are abundant in the original sample will more often occur in the bootstrapped samples than rare values.
     If one then calculates the summary statistic or any other measure (in this case the mean) on each bootstrapped sample and plots those values, one obtains an approximation of the distribution of the summary statistic as if it would have been created by really creating many sufficiently new samples.
 
 Altair supports the calculation of the 95% confidence interval for the mean via bootstrapping via the ``ci0`` and ``ci1`` aggregation functions:
@@ -398,9 +398,9 @@ Altair supports the calculation of the 95% confidence interval for the mean via 
     1. Explain the individual statements in the code above. In particular, what is the purpose of ``point=True`` and why is it important here?
     2. What is the difference between the ``ci0`` and ``ci1`` aggregation functions?
     3. Why do we have to set a title for the y-axis?
-    5. Since the mean and the confidence interval are just summary statistics of the actual data, it is always a good idea to also include the actual data points in the plot.
+    4. Since the mean and the confidence interval are just summary statistics of the actual data, it is always a good idea to also include the actual data points in the plot.
        Add a layer that shows the actual data points as ``mark_circle`` to the plot above.
-    4. Altair supports interactivity in plots. This can be configured in great detail, which is however out of scope for this tutorial. Basic interactivity can however be generated for any plot by calling the method ``interactive()`` on the chart object. Try it out here.
+    5. Altair supports interactivity in plots. This can be configured in great detail, which is however out of scope for this tutorial. Basic interactivity can however be generated for any plot by calling the method ``interactive()`` on the chart object. Try it out here.
 
 Step 12: Correlation analysis
 =============================
@@ -430,7 +430,7 @@ Let us now calculate the correlation coefficient between horsepower and miles pe
         cars,
         title=alt.Title(
             "Relationship between horsepower and miles per gallon",
-            subtitle=f"spearman correlation: {correlation_coeff.item():.2f}",
+            subtitle=f"{correlation_method} correlation: {correlation_coeff.item():.2f}",
         ),
     ).mark_point().encode(
         alt.X("miles per gallon"),
@@ -479,8 +479,8 @@ Next, let us use this dataframe in combination with the scatter plot from before
         alt.Y("horsepower"),
     ) & alt.Chart(correlation_dist).mark_bar().encode(
         alt.X("correlation")
-        .bin(maxbins=30)
-        alt.Y("count()")
+        .bin(maxbins=30),
+        alt.Y("count()"),
     )
 
 In principle, this already shows what we want (we will interpret it later).
