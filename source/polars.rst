@@ -113,7 +113,7 @@ Step 6: Expressions
 
 Polars offers four central ways to manipulate data frames:
 
-* ``select``: select and manipulate columns, replacing the existing ones
+* ``select``: returns a new DataFrame with selected and optionally transformed columns
 * ``with_columns``: select and manipulate columns, adding new ones
 * ``filter``: filter rows based on conditions
 * ``groupby``: group rows based on conditions
