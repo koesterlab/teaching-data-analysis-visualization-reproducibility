@@ -44,4 +44,9 @@ Install the following extensions in VSCode:
 * Jupyter
 * Rainbow csv
 * indent-rainbow
-* Black Formatter
+* Ruff
+
+Exercise
+========
+
+Try to understand and summarize the functionality of each of the installed extensions in your own words.
