@@ -16,6 +16,23 @@ In addition, each encoding has a type (quantitative, ordinal, nominal, temporal)
 
 This chapter is heavily inspired by the official `Altair tutorial <https://altair-viz.github.io/altair-tutorial/README.html>`__.
 
+Exercise
+========
+For this and the following chapter, we first create a new subfolder ``chapters/polars``, enter that folder, and initialize a pixi environment that contains the necessary software tools.
+The necessary software tools are:
+
+* ``python``
+* ``polars``
+* ``altair``
+* ``altair_saver``
+* ``vegafusion``
+* ``vegafusion-python-embed``
+* ``vl-convert-python``
+* ``vega_datasets``
+* ``scipy``
+* ``ipykernel``
+
+
 Step 1: Setup the notebook
 ==========================
 
@@ -504,5 +521,6 @@ Let us tune the result a bit:
 
 .. admonition:: Exercise
 
-    What did we change? Why is that a good idea?
+    1. What did we change? Why is that a good idea?
+    2. Try to explain the functionality that each package in the pixi environment of this subfolder provides.
 

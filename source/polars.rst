@@ -8,30 +8,18 @@ This part of the course is inspired by the `Polars Getting Started Guide <https:
 
 Polars is a programming library for reading, writing, and manipulating tabular data.
 It is a fast and efficient library that is written in Rust and has so-called Python bindings which offer the ability to use it from within Python code.
-For this and the following chapter, we first create a micromamba environment that contains the necessary software tools.
-Create the file ``envs/pystats.yaml`` with the following content:
 
-.. code-block:: yaml
+Exercise
+========
 
-    channels:
-      - conda-forge
-    dependencies:
-      - python =3.11
-      - polars =1.1
-      - altair =5.3
-      - altair_saver =0.5
-      - vegafusion =1.6
-      - vegafusion-python-embed =1.6
-      - vl-convert-python =1.5
-      - vega_datasets =0.9
-      - ipykernel =6.29
-      - scipy =1.14
+For this chapter, we first create a new subfolder ``chapters/polars``, enter that folder, and initialize a pixi environment that contains the necessary software tools.
+The necessary software tools are:
 
-.. admonition:: Exercise
+* ``python``
+* ``polars``
+* ``ipykernel``
 
-    Now create a new micromamba environment named ``pystats`` from this file.
-
-THe following steps are inspired by the official `getting started <https://docs.pola.rs/user-guide/getting-started>`__ guide of Polars.
+The following steps are inspired by the official `getting started <https://docs.pola.rs/user-guide/getting-started>`__ guide of Polars.
 
 Step 1: Setup the notebook
 ==========================
