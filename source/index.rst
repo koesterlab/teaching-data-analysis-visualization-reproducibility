@@ -22,7 +22,7 @@ For each of the introduced topics, we will provide theoretical background and pr
    devenv
    terminal
    git
-   micromamba
+   pixi
    datavzrd
    python
    polars

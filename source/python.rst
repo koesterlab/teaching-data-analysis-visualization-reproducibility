@@ -23,9 +23,11 @@ Alternatively, it can be programmed within so-called (Jupyter) notebooks, which 
 For simplicity, we will use the latter.
 First, create a new notebook in your IDE (assuming you use Visual Studio Code or Gitpod):
 
-1. Create a file named python.ipynb in the left panel.
-2. Open the file and select the Python interpreter in the top right.
-3. Read the text below while trying out all of the examples by literally typing them yourself in the notebook, each of them in a separate cell. Use :ref:`comments` to connect examples and exercises to the text.
+1. Create a new subfolder in your working directory named ``chapters/python``.
+2. Create a file named python.ipynb in the left panel.
+3. Use pixi to init a new environment in this folder and add the two packages ``python`` and ``ipykernel``.
+4. Open the file and select the Python interpreter in the top right.
+5. Read the text below while trying out all of the examples by literally typing them yourself in the notebook, each of them in a separate cell. Use :ref:`comments` to connect examples and exercises to the text.
 
 .. _comments:
 
@@ -83,8 +85,8 @@ The readability of source code is crucial for its maintainability and transparen
 Python already enforces a certain standardized structure by requiring indentation for blocks of code (see :ref:`control_flow`).
 In addition, one should adhere to the official Python style guide, called `PEP8 <https://peps.python.org/pep-0008>`__.
 To a large extend, PEP8 can be enforced automatically by IDEs like Visual Studio Code.
-When setting up the development environment, we have already installed the `black <https://black.readthedocs.io>`__ code formatter, which can be used to automatically format Python code according to PEP8.
-In a notebook, you can apply black's formatting by hitting Ctrl+Shift+P, typing format, and selecting format notebook.
+When setting up the development environment, we have already installed the `ruff <https://docs.astral.sh/ruff>`__ code formatter, which can be used to automatically format Python code according to PEP8.
+In a notebook, you can apply ruff's formatting by hitting Ctrl+Shift+P, typing format, and selecting format notebook.
 
 
 Programming Python with Jupyter notebooks
