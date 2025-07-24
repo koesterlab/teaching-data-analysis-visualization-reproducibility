@@ -85,8 +85,8 @@ The readability of source code is crucial for its maintainability and transparen
 Python already enforces a certain standardized structure by requiring indentation for blocks of code (see :ref:`control_flow`).
 In addition, one should adhere to the official Python style guide, called `PEP8 <https://peps.python.org/pep-0008>`__.
 To a large extend, PEP8 can be enforced automatically by IDEs like Visual Studio Code.
-When setting up the development environment, we have already installed the `black <https://black.readthedocs.io>`__ code formatter, which can be used to automatically format Python code according to PEP8.
-In a notebook, you can apply black's formatting by hitting Ctrl+Shift+P, typing format, and selecting format notebook.
+When setting up the development environment, we have already installed the `ruff <https://docs.astral.sh/ruff>`__ code formatter, which can be used to automatically format Python code according to PEP8.
+In a notebook, you can apply ruff's formatting by hitting Ctrl+Shift+P, typing format, and selecting format notebook.
 
 
 Programming Python with Jupyter notebooks
