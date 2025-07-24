@@ -23,9 +23,11 @@ Alternatively, it can be programmed within so-called (Jupyter) notebooks, which 
 For simplicity, we will use the latter.
 First, create a new notebook in your IDE (assuming you use Visual Studio Code or Gitpod):
 
-1. Create a file named python.ipynb in the left panel.
-2. Open the file and select the Python interpreter in the top right.
-3. Read the text below while trying out all of the examples by literally typing them yourself in the notebook, each of them in a separate cell. Use :ref:`comments` to connect examples and exercises to the text.
+1. Create a new subfolder in your working directory named ``chapters/python``.
+2. Create a file named python.ipynb in the left panel.
+3. Use pixi to init a new environment in this folder and add the two packages ``python`` and ``ipykernel``.
+4. Open the file and select the Python interpreter in the top right (click "select kernel", then "Python environment", then "Default").
+5. Read the text below while trying out all of the examples by literally typing them yourself in the notebook, each of them in a separate cell. Use :ref:`comments` to connect examples and exercises to the text.
 
 .. _comments:
 
