@@ -24,8 +24,9 @@ The following steps are inspired by the official `getting started <https://docs.
 Step 1: Setup the notebook
 ==========================
 
-First, create a new file ``notebook.ipynb`` under ``chapters/polars`` and open it in VSCode.
-In the opened notebook, select the pystats environment as the kernel with the button on the top right.
+First, open the folder with your VSCode (Ctrl+Shift+P and type "Open Folder", then select the folder).
+Next, create a new file ``notebook.ipynb`` under ``chapters/polars`` and open it.
+In the opened notebook, select the just created pixi environment as the kernel with the button on the top right (click "select kernel", then "Python environment", then "Default").
 
 Step 2: Creating a dataframe from scratch
 =========================================

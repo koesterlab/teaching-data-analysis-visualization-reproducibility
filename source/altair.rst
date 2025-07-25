@@ -18,7 +18,7 @@ This chapter is heavily inspired by the official `Altair tutorial <https://altai
 
 Exercise
 ========
-For this and the following chapter, we first create a new subfolder ``chapters/polars``, enter that folder, and initialize a pixi environment that contains the necessary software tools.
+For this and the following chapter, we first create a new subfolder ``chapters/altair``, enter that folder, and initialize a pixi environment that contains the necessary software tools.
 The necessary software tools are:
 
 * ``python``
@@ -36,8 +36,9 @@ The necessary software tools are:
 Step 1: Setup the notebook
 ==========================
 
-First, create a new file ``notebook.ipynb`` under ``chapters/altair`` and open it in VSCode.
-In the opened notebook, select the :ref:`pystats environment <polars>` as the kernel with the button on the top right.
+First, open the folder with your VSCode (Ctrl+Shift+P and type "Open Folder", then select the folder).
+Next, create a new file ``notebook.ipynb`` under ``chapters/altair`` and open it.
+In the opened notebook, select the just created pixi environment as the kernel with the button on the top right (click "select kernel", then "Python environment", then "Default").
 
 In the first cell of the new notebook, let us import some modules we need for this chapter:
 
