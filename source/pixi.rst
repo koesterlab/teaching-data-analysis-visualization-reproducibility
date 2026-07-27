@@ -51,7 +51,7 @@ Exercise
 --------
 
 1. Have a look at the contents of the file ``pixi.toml`` and try to understand the meaning of the different entries using the `pixi documtentation <https://prefix.dev>`__.
-2. How to pixi ensure reproduciblity of the environment and compatibility of the package versions with your analysis?
+2. How does pixi ensure reproduciblity of the environment and compatibility of the package versions with your analysis?
 
 
 Step 3: Activating the environment

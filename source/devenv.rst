@@ -15,7 +15,7 @@ The operating system is crucial for ensuring reproducibility of results.
 Proprietary operating systems, such as Microsoft Windows or macOS, entail the risk of not being runnable on newer hardware after a while.
 Hence, one would have to update the OS, which can cause the analysis to break.
 Therefore, it is recommended to use open-source operating systems, such as Linux distributions, which are free to use and distribute.
-Luckily, linux is directly available from windows via the Windows Subsystem for Linux (WSL).
+Luckily, linux is directly available from Windows via the Windows Subsystem for Linux (WSL).
 
 Choosing a suitable development environment can dramatically increase the productivity while performing data analysis.
 There are numerous options available.
