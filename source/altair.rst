@@ -23,6 +23,7 @@ The necessary software tools are:
 
 * ``python``
 * ``polars``
+* ``pyarrow``
 * ``altair``
 * ``altair_saver``
 * ``vegafusion``
