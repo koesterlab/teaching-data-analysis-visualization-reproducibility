@@ -138,7 +138,7 @@ In the mixed case, the scalar values are broadcasted (i.e. repeated) to the numb
     Extend above selection by an additional expression that computes the sum of column ``c``.
     See how the value is broadcasted to all rows because the other expressions are row-wise.
 
-Select can also be used to remove columns from the dataframe:
+Select can also be used to return a new DataFrame with specific columns excluded:
 
 .. code-block:: python
 
