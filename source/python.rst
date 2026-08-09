@@ -336,7 +336,7 @@ For example, we can convert the tuple to a list by using this mechanism:
     converted_tuple = list(some_tuple)
 
 It depends on the class which arguments a constructor accepts.
-The list and tuple constructors accept and :ref:`iterable <iterables>` as argument.
+The list and tuple constructors accept an :ref:`iterable <iterables>` as an argument.
 The dictionary constructor (called ``dict``) accepts a dictionary or an iterable of tuples that are interpreted as key-value pairs.
 
 .. admonition:: Exercises
