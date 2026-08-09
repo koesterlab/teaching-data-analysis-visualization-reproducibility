@@ -273,7 +273,7 @@ If the actual counts per bin are particularly important, we can instead return t
         alt.Y("count()"),
     ).facet(row="origin")
 
-As can be seen, this trades of the ability to see the actual numbers by the height of the bar by using a lot of additional vertial space.
+As can be seen, this trades of the ability to see the actual numbers by the height of the bar by using a lot of additional vertical space.
 The latter can be mitigated by two switches though.
 
 First, we can limit the height per subplot:
