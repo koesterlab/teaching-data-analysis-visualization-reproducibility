@@ -471,7 +471,7 @@ We first create the bootstrapped data via
 .. code-block:: python
 
     def bootstrap(df):
-        return df.sample(cars.shape[0], with_replacement=True)
+        return df.sample(df.shape[0], with_replacement=True)
 
     correlation_dist = pl.concat(
         [
